@@ -52,4 +52,14 @@ Your SD card should now look like this:
             
     
     
-DCIM and SYSTEM were put there by the camera. httpd and telnetd were the copies of BusyBox. Everything else is the contents of the SD-card-root folder from this repository.
+DCIM and SYSTEM were put there by the camera. Everything else is the contents of the SD-card-root folder from this repository.
+Put your SD card back in your Gear 360 camera (2017). And power it on.
+After a few seconds you should see the front led of the camera blink (green-orange) for 2 seconds.
+This confirms that the http server is running on camera.
+
+### Part 2
+
+Please install the Android application from Google Play. Name of the app is "Gear 360 File Access"
+Dİrect URL to Google Play will be provided later here:
+//TODO
+
