@@ -63,3 +63,28 @@ Please install the Android application from Google Play. Name of the app is "Gea
 Dİrect URL to Google Play will be provided later here:
 //TODO
 
+## Running the application and connecting
+
+1. Launch the app on your Android phone
+2. Please put the Gear 360 camera in OSC (Streetview mode)
+3. You have to long press Bluetooth button on the side of the camera. When you see "Connect to..." on the display, please click the Bluetooth button a few times until you see "Connect to Streer View"
+4. Please click start (record/shutter) button to select the mode
+5. Now you will see "Gear 360(XXXX) and a 8 digit wifi SSID on the display
+6. Go to wifi settings on your phone and select the SSID starting with "Gear 360"
+7. When asked for wifi password , enter the 8 digit code from step 5.
+8. You will hear a sound from camera confirming that the phone is connected.
+9. Now on the android application you should see connection is active. (Gear 360 Connected" indication)
+
+The upper scrolling window will display files on camera. Lower scrolling window will show files that are downloaded from the camera to the storage of your phone (Gear260 folder)
+File name, size and creation date are also displayed.
+You can download images from the camera to your phone or delete images on the camera. 
+You can stitch 360 degree images or videos on your phone , and also you can delete files on your phone.
+
+I hope this helps anyone with a Gear 360 camera and Android phone on which the official Samsung application does not work.
+
+Please feel free to reach me if you have any issues with the project, or you have an idea to improve the application.
+
+## TODO
+
+1. Faster video processing ?
+2. Injecting GPS location collected from phone (option)
