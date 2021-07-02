@@ -59,7 +59,7 @@ This confirms that the http server is running on camera.
 
 ### Part 2
 
-Please install the Android application from Google Play. Name of the app is "Gear 360 File Access"
+Please install the Android application from Google Play. Name of the app is "Gear 360 File Access & Stitcher"
 Dİrect URL to Google Play will be provided later here:
 //TODO
 
