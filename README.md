@@ -88,3 +88,16 @@ Please feel free to reach me if you have any issues with the project, or you hav
 
 1. Faster video processing ?
 2. Injecting GPS location collected from phone (option)
+
+## Credits
+
+First part of the application is based on :
+
+@vitorio's project:
+https://github.com/vitorio/gear360-2017-mods
+
+@ottokiksmaler's information:
+https://github.com/ottokiksmaler/gear360_modding
+Inspired by @mewlips' other Samsung camera mods:
+
+https://mewlips.github.io/nx-remote-controller-mod/
