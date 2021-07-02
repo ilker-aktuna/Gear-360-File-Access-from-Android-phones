@@ -1,6 +1,8 @@
 # Gear 360 File Access from Android phones
 Samsung Gear 360 (2017 version) File Access from Android phones - works on even Android 11
 
+![gear360icon](https://user-images.githubusercontent.com/51407106/124274349-d35b3e80-db49-11eb-94de-05a27930ed1d.png)
+
 **This project consists of 2 parts:**
 1. Software mod on Samsung Gear 360 (installing provided files on SD card)
 2. Android application from Google Play
