@@ -1,0 +1,115 @@
+#!/bin/bash
+
+BASEPATH=/sdcard/DCIM
+JHEAD=/mnt/mmc/mods/jhead
+startfrom=$(echo "$QUERY_STRING" | sed -n 's/^.*startfrom=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+filedir=$(echo "$QUERY_STRING" | sed -n 's/^.*filedir=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+imdir=$(echo "$QUERY_STRING" | sed -n 's/^.*imdir=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+imfile=$(echo "$QUERY_STRING" | sed -n 's/^.*imfile=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+thumbfile=$(echo "$QUERY_STRING" | sed -n 's/^.*thumbfile=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+dl=$(echo "$QUERY_STRING" | sed -n 's/^.*dl=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+delete=$(echo "$QUERY_STRING" | sed -n 's/^.*delete=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+thumbnail=$(echo "$QUERY_STRING" | sed -n 's/^.*thumbnail=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+
+#echo "Content-type: text/html"
+#echo
+
+if [[ $thumbfile ]]; then
+echo
+$JHEAD -st - "$thumbfile"
+exit 0
+fi
+
+if [[ $imfile ]]; then
+echo -n "Content-Disposition: inline; filename=\""
+echo -n `basename $imfile`
+echo "\""
+echo 
+cat "$imfile" 
+exit 0
+fi
+
+if [[ $thumbnail ]]; then
+echo -n "Content-Disposition: inline; filename=\""
+echo -n `basename $thumbnail`
+echo "\""
+echo
+$JHEAD -st - "/sdcard/DCIM/100PHOTO/$thumbnail"
+exit 0
+fi
+
+
+if [[ $dl ]]; then
+echo -n "Content-Disposition: inline; filename=\""
+echo -n `basename $dl`
+echo "\""
+echo 
+cat "/sdcard/DCIM/100PHOTO/$dl" 
+exit 0
+fi
+
+if [[ $delete ]]; then
+rm "/sdcard/DCIM/100PHOTO/$delete" 
+fi
+
+filecount=`ls -alt  /sdcard/DCIM/100PHOTO | grep "_" | wc -l`
+echo echo "Content-Type: application/json"
+echo
+echo "{\"results\": {\"entries\": ["
+ls -alt --full-time /sdcard/DCIM/100PHOTO | grep "_" | sed 's/.000000000//g' | awk '{print $9,$6,$7,$5}' | while read name date time size
+do
+
+echo "{\"name\": \"$name\",\"uri\": \"image URI\",\"size\": $size,\"date\": \"$date $time\"},"
+
+done
+echo "],\"totalEntries\": $filecount,\"continuationToken\": \"50\"}}"
+
+exit
+
+
+echo
+echo "<html><head><style>a {text-decoration: none}</style><body>";
+if [[ $filedir ]]; then
+  for filename in `ls -tr $filedir/*`; do
+        echo  "<div style=\"float:left; clear: both; margin: 10px\"><a href=\"?imfile=$filename\">" `basename "$filename"` "</a> &nbsp; ["`du -sk $filename|cut -f 1` "kB]</div>";
+  done
+  exit 0      
+fi
+
+if [[ $imdir ]]; then
+  let i=0
+  for filename in `ls $imdir/*.{JPG,jpg,JPEG,jpeg}|sort -r`; do
+        let i=i+1
+        if (( i <= startfrom + 20 && i>startfrom)); then 
+          echo  "<div style=\"float:left; margin: 5px\"><a href=\"?imfile=$filename\"><img src=\"?thumbfile=$filename\"></a><br/>"`basename "$filename"` "</a> &nbsp;["`stat -c %y $filename|cut -c 3-16`"] ["`du -sk $filename|cut -f 1` "kB]</div>";
+        fi
+  done
+
+  echo "<br/>"
+  if (( startfrom >= 20 )); then
+        let nextstart=startfrom-20
+        echo "<div style=\"float: left; clear: both; border: 1px solid gray; border-radius: 20px; padding: 10px; margin: 10px; box-shadowX: 5px 5px 5px gray; background-color: #f0f0f0\"><a href=\"?imddir="$imdir"&startfrom="$nextstart"\">Previous 20</a></div>"
+  fi
+
+  if (( i >= startfrom + 20)); then
+        let nextstart=startfrom+20
+        echo "<div style=\"float: left; clear: none; border: 1px solid gray; border-radius: 20px; padding: 10px; margin: 10px; box-shadowX: 5px 5px 5px gray; background-color: #f0f0f0\"><a href=\"?imdir="$imdir"&startfrom="$nextstart"\">Next 20</a></div>"
+  fi
+  exit 0      
+fi
+
+for dirs in `find $BASEPATH \( -iname '*.JPG' -or -iname '*.SRW' \) -printf '%h\n' | sort -u -r`; do
+        files=("$dirs"/*.{JPG,SRW,jpg,jpeg,srw"${#files[@]}"})
+        adirname=`basename $dirs`
+        if [[ $adirname == .* ]]; then
+                echo
+        else 
+        echo "<div style=\"float: left; clear: both; border: 1px solid gray; border-radius: 20px; padding: 0px; margin: 10px; box-shadowX: 5px 5px 5px gray; background-color: #f0f0f0\">"
+        echo "<a href=\"?imdir=$dirs\" style=\"float: left;  border: 1px solid gray; border-radius: 10px; padding: 10px; margin: 10px; box-shadow: 5px 5px 5px gray; background-color: #e0f0ff\">$adirname</a> &nbsp; ";
+        echo "<a href=\"?filedir=$dirs\" style=\"float: left; border: 1px solid gray; border-radius: 10px; padding: 10px; margin: 10px; box-shadow: 5px 5px 5px gray; background-color: #e0ffe0;color: black\">Files (""${#files[@]}"")</a></div>";
+        fi
+done
+echo "</body></html>"
+#echo $imdir
+#echo $imfile
+

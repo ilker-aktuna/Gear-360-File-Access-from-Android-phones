@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320, initial-scale=1">
+<title>Gear 360 (2017) - Remote Control</title>
+<style>
+.sec {border: 1px solid gray; margin-bottom:10px}
+.dugme {border: 1px solid gray; margin: 2mm; background: #e0ffe0; padding: 2mm; display: inline-block}
+input,select {min-height: 9mm; padding: 1mm; font-size: 14pt}
+h1,h2,h3,body {font-family: arial,helvetica,sans-serif}
+h3 {font-size: 14pt; background: #e0e0e0; margin-top:0; padding: 1mm}
+</style>
+</head>
+<body>
+<div class="sec">
+<h3>Quick execute</h3>
+<a class="dugme" target="_blank" href="/cgi-bin/gallery">Gallery</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+key+click+s2">Take photo</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+key+click+s2%3Bsleep+10%3Bst+key+click+s2%3Bsleep+10%3Bst+key+click+s2%3Bsleep+10%3Bst+key+click+s2%3Bsleep+10%3Bst+key+click+s2">Take 5 photos</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+key+click+menu%3Bsleep+2%3B%2Fsdcard%2Fmods%2Fgetmode">Change mode</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+cap+capdtm+setusr+5+0x050001%3Bst+cap+capdtm+setusr+0+4;st+cap+capdtm+setusr+1+0x10004">ISO 100</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+cap+capdtm+setusr+5+0x050001%3Bst+cap+capdtm+setusr+0+2;st+cap+capdtm+setusr+1+0x10002">ISO AUTO</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+cap+capdtm+setusr+5+0x050000%3Bst+cap+capdtm+setusr+64+0x400000">ISO AUTO 125</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+cap+capdtm+setusr+5+0x050000%3Bst+cap+capdtm+setusr+64+0x400005">ISO AUTO 400</a>
+<a class="dugme" target="bottom" href="/cgi-bin/execute?rawcmd=st+cap+capdtm+usrlist">USRLIST</a>
+</div>
+
+<div class="sec">
+<h3>Execute a command</h3>
+<form action="/cgi-bin/execute" method="GET" target="bottom">
+<textarea cols=80 name="rawcmd"/></textarea><br/>
+<select name="ret">
+<option value=0>No</option>
+<option value=1>1s</option>
+<option value=2>2s</option>
+<option value=3>3s</option>
+<option value=5>5s</option>
+<option value=10>10s</option>
+</select> Return 
+<input type="submit" value="Execute!"/>
+</form>
+</div>
+
+</body>
+</html>
+
