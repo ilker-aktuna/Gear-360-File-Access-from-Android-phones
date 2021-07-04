@@ -63,7 +63,7 @@ This confirms that the http server is running on camera.
 
 Please install the Android application from Google Play. Name of the app is "Gear 360 File Access & Stitcher"
 Dİrect URL to Google Play will be provided later here:
-//TODO
+https://play.google.com/store/apps/details?id=com.aktuna.gear.gear360fileaccess
 
 ## Running the application and connecting
 
