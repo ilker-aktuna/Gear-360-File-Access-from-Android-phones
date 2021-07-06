@@ -29,6 +29,8 @@ This application is tested on Gear 360 2017 version. It may also work on the pre
 
 ## Installation
 
+see instructional video here: https://www.youtube.com/watch?v=yrW8DOIQsS0
+
 ### Part 1
 
 Please clone this repository or download the .zip file of it. (If you're on GitHub, click the green "Clone or download" button on the right, and then "Download ZIP".)
