@@ -25,7 +25,8 @@ Video stitching takes a long time. I will work on making it faster if I can find
 
 ### Important !
 
-This application is tested on Gear 360 2017 version. It may also work on the previous Gear 360 but not tested.
+This application is tested on Gear 360 2017 version. It does not work on previous versions of Gear 360.
+On Gear 360 2017, latest firmware is recommended because of Streetview requirement.
 
 ## Installation
 
