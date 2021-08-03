@@ -62,6 +62,12 @@ Put your SD card back in your Gear 360 camera (2017). And power it on.
 After a few seconds you should see the front led of the camera blink (green-orange) for 2 seconds.
 This confirms that the http server is running on camera.
 
+#### important:
+if you want to use the BT mode occasionally, please try the version 2 of the folder. (SD-card-root-V2)
+this version does not start the httpd server automatically when powered-on.
+instead, user has to Double-click the [Power] button on the camera. Then user should see a top light cycle green-orange-green to indicate it's working.
+this is for users who still want to use the BT mode when required. Because if httpd server is running , BT mode does not work. 
+
 ### Part 2
 
 Please install the Android application from Google Play. Name of the app is "Gear 360 File Access & Stitcher"
