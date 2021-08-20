@@ -28,6 +28,11 @@ Video stitching takes a long time. I will work on making it faster if I can find
 This application is tested on Gear 360 2017 version. It does not work on previous versions of Gear 360.
 On Gear 360 2017, latest firmware is recommended because of Streetview requirement.
 
+If you do not have a recent firmware with "Streetview option", please try:
+- using the "connect to IOS" option (it might work)
+- updating firmware with the method in this thread:
+https://forum.xda-developers.com/t/mod-port-samsung-gear-360-manager-for-all-devices-updated-21-jan-21-v1-4-00-4-fw.3400383/
+
 ## Installation
 
 see instructional video here: https://www.youtube.com/watch?v=yrW8DOIQsS0
