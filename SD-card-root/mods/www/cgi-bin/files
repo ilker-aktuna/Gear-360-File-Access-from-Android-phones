@@ -34,7 +34,7 @@ echo -n "Content-Disposition: inline; filename=\""
 echo -n `basename $thumbnail`
 echo "\""
 echo
-$JHEAD -st - "/sdcard/DCIM/100PHOTO/$thumbnail"
+$JHEAD -st - "/sdcard/DCIM/*PHOTO/$thumbnail"
 exit 0
 fi
 
@@ -44,19 +44,19 @@ echo -n "Content-Disposition: inline; filename=\""
 echo -n `basename $dl`
 echo "\""
 echo 
-cat "/sdcard/DCIM/100PHOTO/$dl" 
+cat "/sdcard/DCIM/*PHOTO/$dl" 
 exit 0
 fi
 
 if [[ $delete ]]; then
-rm "/sdcard/DCIM/100PHOTO/$delete" 
+rm "/sdcard/DCIM/*PHOTO/$delete" 
 fi
 
-filecount=`ls -alt  /sdcard/DCIM/100PHOTO | grep "_" | wc -l`
+filecount=`ls -alt  /sdcard/DCIM/*PHOTO | grep "_" | wc -l`
 echo echo "Content-Type: application/json"
 echo
 echo "{\"results\": {\"entries\": ["
-ls -alt --full-time /sdcard/DCIM/100PHOTO | grep "_" | sed 's/.000000000//g' | awk '{print $9,$6,$7,$5}' | while read name date time size
+ls -alt --full-time /sdcard/DCIM/*PHOTO | grep "_" | sed 's/.000000000//g' | awk '{print $9,$6,$7,$5}' | while read name date time size
 do
 
 echo "{\"name\": \"$name\",\"uri\": \"image URI\",\"size\": $size,\"date\": \"$date $time\"},"
