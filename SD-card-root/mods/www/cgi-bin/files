@@ -34,7 +34,7 @@ echo -n "Content-Disposition: inline; filename=\""
 echo -n `basename $thumbnail`
 echo "\""
 echo
-$JHEAD -st - "/sdcard/DCIM/*PHOTO/$thumbnail"
+$JHEAD -st - /sdcard/DCIM/*PHOTO/$thumbnail
 exit 0
 fi
 
@@ -44,12 +44,12 @@ echo -n "Content-Disposition: inline; filename=\""
 echo -n `basename $dl`
 echo "\""
 echo 
-cat "/sdcard/DCIM/*PHOTO/$dl" 
+cat /sdcard/DCIM/*PHOTO/$dl
 exit 0
 fi
 
 if [[ $delete ]]; then
-rm "/sdcard/DCIM/*PHOTO/$delete" 
+rm /sdcard/DCIM/*PHOTO/$delete 
 fi
 
 filecount=`ls -alt  /sdcard/DCIM/*PHOTO | grep "_" | wc -l`
