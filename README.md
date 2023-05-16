@@ -23,6 +23,8 @@ If stitching function is used, the stitched files are also saved on the same fol
 
 Video stitching takes a long time. I will work on making it faster if I can find a better method.
 
+Update (16.05.2023) : Added shooting new photo feature and time sync with phone.
+
 ### Important !
 
 This application is tested on Gear 360 2017 version. It does not work on previous versions of Gear 360.
@@ -54,7 +56,8 @@ Your SD card should now look like this:
         |-- www
         |   |-- cgi-bin
         |   |    |-- files
-        |   |    `-- gallery
+        |   |    |-- gallery
+        |   |    `-- setdate
         |   |-- index.html
         |   `-- top.html
         |-- jhead
