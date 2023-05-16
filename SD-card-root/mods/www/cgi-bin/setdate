@@ -1,0 +1,16 @@
+#!/bin/bash
+
+millis=$(echo "$QUERY_STRING" | sed -n 's/^.*millis=\([^&]*\).*$/\1/p' | sed "s/%20/ /g")
+
+
+
+if [[ $millis ]]; then
+result=`date +"%s.%N" -s @$millis`
+result2=`date`
+echo "Content-Type: application/json"
+echo
+echo "{\"cmdresult\": \"$result\", \"currentdate\": \"$result2\"}"
+
+
+exit 0
+fi
